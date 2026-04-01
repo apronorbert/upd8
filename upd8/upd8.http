@@ -1,0 +1,24 @@
+@upd8_HostAddress = http://localhost:5172
+
+GET {{upd8_HostAddress}}/api/hardware
+Accept: application/json
+
+###
+
+GET {{upd8_HostAddress}}/api/software
+Accept: application/json
+
+###
+
+GET {{upd8_HostAddress}}/api/info
+Accept: application/json
+
+###
+
+GET {{upd8_HostAddress}}/api/update
+Accept: application/json
+
+###
+
+POST {{upd8_HostAddress}}/api/update/apply
+Accept: application/json
