@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 VelopackApp.Build().Run();
 
+builder.Host.UseWindowsService();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,13 +23,15 @@ builder.Services.AddSingleton<ISoftwareService, RegistrySoftwareService>();
 builder.Services.AddSingleton<IUpdateService, VelopackUpdateService>();
 builder.Services.AddHostedService<UpdateStartupService>();
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5050);
+});
+
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

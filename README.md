@@ -20,6 +20,21 @@ Kestrel Web API with Swagger, WMI hardware endpoints, and self-update via Velopa
 dotnet run --project .\upd8\upd8.csproj
 ```
 
+## Windows Service
+
+The app runs as a Windows service and listens on `http://0.0.0.0:5050` (Swagger enabled in all environments).
+
+**Install service**
+```powershell
+.\install-service.ps1 -ExePath "C:\Program Files\upd8\upd8.exe"
+```
+
+**Uninstall service**
+```powershell
+sc.exe stop upd8
+sc.exe delete upd8
+```
+
 ## Packaging With Velopack
 
 Velopack updates only work when the app is packaged and installed by Velopack.
