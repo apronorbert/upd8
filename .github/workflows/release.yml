@@ -34,5 +34,5 @@ jobs:
           dotnet tool install -g vpk
           echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
           vpk download github --repoUrl https://github.com/${{ github.repository }} --token ${{ secrets.GITHUB_TOKEN }}
-          vpk pack --packId upd8 --packVersion ${{ steps.get-version.outputs.version }} --packDir publish --mainExe upd8.exe
+          vpk pack --packId upd8 --packVersion ${{ steps.get-version.outputs.version }} --packDir publish --mainExe upd8.exe --packTitle upd8 --packAuthors apronorbert --msi --instLocation PerMachine
           vpk upload github --repoUrl https://github.com/${{ github.repository }} --publish --releaseName "upd8 ${{ steps.get-version.outputs.version }}" --tag v${{ steps.get-version.outputs.version }} --token ${{ secrets.GITHUB_TOKEN }}

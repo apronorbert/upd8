@@ -48,7 +48,7 @@ dotnet tool install -g vpk
 ```powershell
 dotnet publish .\upd8\upd8.csproj -c Release -r win-x64 -o .\publish --self-contained true
 vpk download github --repoUrl https://github.com/apronorbert/upd8
-vpk pack --packId upd8 --packVersion 0.1.0 --packDir .\publish --mainExe upd8.exe
+vpk pack --packId upd8 --packVersion 0.1.0 --packDir .\publish --mainExe upd8.exe --packTitle upd8 --packAuthors apronorbert --msi --instLocation PerMachine
 ```
 
 **Upload to GitHub Releases**
@@ -56,10 +56,10 @@ vpk pack --packId upd8 --packVersion 0.1.0 --packDir .\publish --mainExe upd8.ex
 vpk upload github --repoUrl https://github.com/apronorbert/upd8 --publish
 ```
 
-**Install (on Windows)**
+**Install (on Windows, machine-wide)**
 1. Go to the GitHub Releases page for the repo.
-1. Download the generated `Setup.exe` (or the installer produced by Velopack).
-1. Run the installer. This creates the Velopack app directory and registers the app as installed.
+1. Download the generated `upd8-*.msi`.
+1. Run the installer as Administrator. This installs under `Program Files` and works with LocalSystem services.
 
 ## How Updates Apply
 

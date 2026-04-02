@@ -13,6 +13,8 @@ $publishDir = Join-Path $repoRoot "publish"
 $repoUrl = "https://github.com/apronorbert/upd8"
 $packId = "upd8"
 $mainExe = "upd8.exe"
+$packTitle = "upd8"
+$packAuthors = "apronorbert"
 
 if (-not (Test-Path $projectPath)) {
     throw "Project not found: $projectPath"
@@ -56,7 +58,7 @@ if (-not [string]::IsNullOrWhiteSpace($token)) {
 }
 
 Write-Host "Packing..."
-vpk pack --packId $packId --packVersion $version --packDir $publishDir --mainExe $mainExe
+vpk pack --packId $packId --packVersion $version --packDir $publishDir --mainExe $mainExe --packTitle $packTitle --packAuthors $packAuthors --msi --instLocation PerMachine
 
 Write-Host "Uploading..."
 if (-not [string]::IsNullOrWhiteSpace($token)) {
